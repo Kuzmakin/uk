@@ -14,7 +14,7 @@
     }
 
     .container {
-      max-width: 5000px;
+      max-width: 300px;
       margin: 0 auto;
       padding: 20px;
       border-radius: 10px;
@@ -22,28 +22,19 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
+    .dynamic-title {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
     .text-container {
       flex: 0 0 300px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       text-align: left;
-    }
-
-    #imageTitle {
-      font-size: 32px;
-      font-weight: 400;
-      margin-bottom: 5px;
-      color: #000;
-      text-align: center;
-    }
-
-    #imageSubtitle {
-      font-size: 18px;
-      font-style: italic;
-      margin-bottom: 15px;
-      color: #666;
-      text-align: center;
     }
 
     .content {
@@ -106,8 +97,8 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 5px; /* Зменшено відступ між малими зображеннями */
-      margin: 5px 0; /* Зменшено відступ між великим і малими зображеннями */
+      gap: 5px;
+      margin: 5px 0;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
@@ -143,13 +134,23 @@
     #backButton {
       display: none;
     }
+
+    .title-container {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    #imageSubtitle {
+      font-size: 18px;
+      font-style: italic;
+      color: #666;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2 id="imageTitle">Британські острови</h2>
-    <p id="imageSubtitle">(Велика Британія та Ірландія)</p>
-
+    <h2 id="imageTitle" class="dynamic-title">Британські острови</h2>
     <div class="content">
       <div class="image-container" id="mapContainer">
         <img id="mainImage" class="main-image" src="img/br.svg" alt="Карта Британських островів">
@@ -180,6 +181,11 @@
     </div>
   </div>
 
+  <!-- Статичний підпис внизу -->
+  <div class="title-container">
+    <p id="imageSubtitle">(Велика Британія та Ірландія)</p>
+  </div>
+
   <script>
     const historyData = [
       { name: "Британські острови", event: "Регіональний розподіл", date: "", image: "img/UK00.svg" },
@@ -195,7 +201,6 @@
 
     let currentIndex = 0;
     const imageTitle = document.getElementById('imageTitle');
-    const imageSubtitle = document.getElementById('imageSubtitle');
     const historyText = document.getElementById('historyText');
     const mainImage = document.getElementById('mainImage');
     const forwardButton = document.getElementById('forwardButton');
